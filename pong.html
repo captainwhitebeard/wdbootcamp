@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="Keywords" content="HTML, CSS, Javascript">
+
+  <!--CREDITS-->
+  <!--
+https://www.youtube.com/watch?v=nl0KXCa5pJk&feature=youtu.be
+Javascript animated circle clock: Mateusz Rybczonec
+https://codepen.io/geoffgraham/pen/yLywVbW
+-->
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <!--JSAlert Message-->
+  <script src="alert/alertify.min.js"></script>
+
+  <!--Start of Sweet Alert Test Station-->
+  <!--
+<script src="alert/sweetalert.min.js"></script>
+<script src="https://www.jquery-az.com/javascript/alert/dist/sweetalert.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="alert/sweetalert.js"></script>
+<link rel="stylesheet" href="alert/sweetalert.css">
+-->
+  <!--
+<script type="module">
+import swal from 'sweetalert';
+</script>
+-->
+  <!--End of Sweet Alert Test Station-->
+  <link rel="stylesheet" href="alert/alertify.core.css" />
+  <link rel="stylesheet" href="alert/alertify.default.css" id="toggleCSS" />
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <title>Classic Pong with Options</title>
+</head>
+
+<body onload="greeting();curtainSlide()">
+  <div id="veilProgress"></div>
+  <div id="veilBar"></div>
+  </div>
+  <!--The button is hidden for the purple bar effect But I want a Slide Curtain-->
+  <button id="btnVeil" onclick="veilCurtainSlide()"></button>
+  <div id="battery" class="fa"></div>
+  <!-- CURRENTLY NOT IN USE. GRAVITY SIMULATION<div id="gravity"> </div>
+<input type="text"></input>
+-->
+
+  <!--
+<script type="module">
+  import swal from 'sweetalert';
+  </script>
+<button onclick="JSalert2()">Show an Alert</button>
+-->
+  <header>
+    <!--Game Instructions-->
+    <span id="instructions">
+      <p>Press<kbd id="P">"P"</kbd> to pause game! Press <kbd id="C">"C"</kbd> to continue playing game!</p>
+    </span>
+  </header>
+
+  <!--End of game instructions-->
+  <!--Start of Game Option Navigation-->
+  <span id="privacy">
+    <img src="images/privacy.png" alt="Privacy Image">
+  </span>
+  <div class="gameOptionsContainer">
+
+    <form class="game_options">
+      <img src="images/jdweblogo.png" alt="My Gamer Web Logo" id="jdgamer"><br>
+      <img src="images/gameoptionslogo.png" alt="A  Game Option Logo" id="gamecontrols">
+      <span style="font-size:30px;cursor:pointer" id="menu" onclick="toggleGameOptionVisibility()">&#9776;</span>
+
+      <!--
+<div id="myNav" class="overlayNA">
+<a href="javascript:void(0)" class="closebtn" onclick="closeGameOptionNav()">&times;</a>
+<div class="overlay-content">
+<div class="myNav" id="Options">
+-->
+      <section id="Options">
+        <div class="card">
+          <img src="images/javatar.png" alt="My Avatar: Media Cloud-Multi Internet Technology" style="width:100%">
+          <div class="container">
+            <h5><b>JAD:MC-MIT</b></h5>
+            <!--   <p>IoT</p> -->
+          </div>
+        </div>
+
+        <h4 id="game_music">Background Image:
+          <label class="switch">
+            <input type="checkbox" id="gamemusic" onclick="toggleBGImage()">
+            <span class="slider round"></span>
+          </label>
+        </h4>
+        <h4 id="game_music">Background Music:
+          <label class="switch">
+            <input type="checkbox" id="gamemusic" onclick="toggleMusic()">
+            <span class="slider round"></span>
+          </label>
+        </h4>
+        <!--
+<button id="pauseit" type="reset" onclick="pauseMusic()"; return="false" >Pause</button>  -->
+
+        <h4 id="cursor_display">Show Pong Cursor:
+          <label class="switch">
+            <input type="checkbox" id="check_cursor" onclick="toggleCursor()">
+            <span class="slider round"></span>
+          </label>
+        </h4>
+
+        <h4 id="game_timer">Game Timer:
+          <label class="switch">
+            <input type="checkbox" id="gameTimer" onclick="toggleTimer()">
+            <span class="slider round"></span>
+          </label><br><br>
+          <div id="timeControls">
+            <label for="7" class="number_points">7</label><input type="radio" name="timevalue" value="4" id="4" onclick="TIME_LIMIT=240; showTime()">
+            <label for="11" class="number_points">11</label><input type="radio" name="timevalue" value="7" id="7" onclick="TIME_LIMIT=420; showTime()">
+            <label for="22" class="number_points">22</label><input type="radio" name="timevalue" value="11" id="11" onclick="TIME_LIMIT=660; showTime()">
+            <br><br>
+            <button type="button" id="start" onclick="startTimer()">Start</button>
+            <button type="reset" id="pause" onclick="pauseTimer()">Pause</button>
+            <button type="reset" id="resume" onclick="resumeTimer()">Resume</button>
+            <button type="reset" id="reset" onclick="resetTimer()">Reset</button><br><br>
+            <span id="app"></span>
+          </div>
+          <h4 id="score_timer">Score Timer:
+            <label class="switch">
+              <input type="checkbox" id="scoreTimer" onclick="toggleScoreTimer()">
+              <span class="slider round"></span><br>
+            </label><br>
+
+            <span id="scoreOption">
+              <label id="scoreMessage">What score do you want to play to?</label><br>
+              <!--This opens a real clock scripted animation-->
+              <a href="#" onclick="popupwindow('clock.htm', 'hello', 400, 400)" ; return false;"><img src="images/clockmodern.png" id="moderclock"></a><br>
+              <!--
+<label for="7" class="number_points">7</label><input type="radio" name="scorevalue" value="7" id="7" onclick="prompt('do you wish to play 7 rounds?');scorePlay=5">
+-->
+              <label for="7" class="number_points">7</label><input type="radio" name="scorevalue" value="7" id="7" onclick="scorePlay=7">
+              <label for="11" class="number_points">11</label><input type="radio" name="scorevalue" value="11" id="11" onclick="scorePlay=11">
+              <label for="22" class="number_points">22</label><input type="radio" name="scorevalue" value="22" id="22" onclick="scorePlay=22">
+            </span>
+          </h4>
+
+          <div class="gameDifficulty">
+            <h4 id="game_difficulty">Game Difficulty:
+              <!--onclick="calculateSpeed(ball.speed = 7)"-->
+              <label for="easy" class="game_difficulty">Easy</label><input type="radio" name="game_difficulty" value="easy" id="easy" onclick="ball.speed = 7">
+              <label for="medium" class="game_difficulty">Medium</label><input type="radio" name="game_difficulty" value="medium" id="medium" onclick="ball.speed = 9">
+              <label for="hard" class="game_difficulty">Hard</label><input type="radio" name="game_difficulty" value="hard" id="hard" onclick="ball.speed = 11">
+              <label for="jedi" class="game_difficulty">Jedi</label><input type="radio" name="game_difficulty" value="jedi" id="jedi" onclick="ball.speed = 13; JSalert()">
+            </h4>
+          </div>
+
+          <div class="numPlayers">
+            <h4 id="numPlayers">Number of Players:
+              <label for="one_player" class="number_players">One Player</label><input type="radio" name="players" value="one_player" id="one_player">
+              <label for="two_player" class="number_players">Two Player</label><input type="radio" name="players" value="two_player" id="two_player">
+            </h4>
+          </div>
+
+          <div class="numPaddles">
+            <h4 id="numPaddles">Number of Paddles:
+              <label for="one_paddle" class="number_paddles">One Paddle</label>
+              <input type="radio" name="paddles" value="one_paddle" id="one_paddle">
+              <label for="two_paddle" class="number_paddles">Two Paddle</label><input type="radio" name="paddles" value="two_paddle" id="two_paddle">
+            </h4>
+          </div>
+
+          <div id="playpause">
+            <label class="switch">
+              <input type="checkbox" onclick="togglePauseState()">
+              <span class="slider"></span>
+            </label>
+          </div>
+          <h4 id="playpause">Play/Pause</h4><br>
+          <div id="resetGame">
+            <button type="submit" class="btn_reset" name="resetGame" id="btn_reset" onclick="return update()">Reset Game</button>
+          </div>
+
+    </form>
+    <!--ANIMATED BATTERY NOT IN USE-->
+
+    <!--Animated Clock-->
+    <span id="app"></span>
+  </div>
+  </div>
+  </section>
+  <!--End of Game Option Navigation-->
+  <!--Where the game lives-->
+  <div class="pong">
+    <canvas id="pong" width="600" height="400"></canvas>
+  </div>
+  <script src="scripts/pong.js"></script>
+  <!--End of where game lives-->
+
+  <footer class="footer" id="footnote">
+    <span id="footerContainer">
+      <p id="greet" onmousemove="hideMe()"></p>
+      <small>Copyright &copy; 2020 All rights reserved | The Original Game was made by Atari and released in 1972.<br>
+        This game was made with<span class="footer-heart">&#9829;</span>
+        by<a href="https://www.youtube.com/channel/UC8n8ftV94ZU_DJLOLtrpORA" target="_blank" rel="noopener noreferrer"> Code Explained !</a><br>
+        <span id="jcredit">
+          I redesigned and added all option controls to the existing pong structure of class (real) wheel.
+        </span>
+      </small>
+    </span>
+    <div id="unit_circle">
+      <a href="unitcircle.html" target="_blank" rel="noopener noreferrer"> <img src="images/fxpie.jpg" id="fxpie" width="40px"></a>
+    </div>
+    <div id="full_screen" class="full_screen">
+      <img src="images/fsicon.jpg" onclick="pongFullScreen()" width="40px">
+    </div>
+    <div id="myProgress">
+      <div id="myBar">0%</div>
+    </div>
+
+
+
+    <button id="btnPush" onclick="progressPush()" return></button>
+  </footer>
+  </div>
+
+
+  <script>
+    function chargebattery() {
+      var a;
+      a = document.getElementById("battery");
+      a.innerHTML = "&#xf244;";
+      setTimeout(function() {
+        a.innerHTML = "&#xf243;";
+      }, 1000);
+      setTimeout(function() {
+        a.innerHTML = "&#xf242;";
+      }, 2000);
+      setTimeout(function() {
+        a.innerHTML = "&#xf241;";
+      }, 3000);
+      setTimeout(function() {
+        a.innerHTML = "&#xf240;";
+      }, 4000);
+    }
+    chargebattery();
+    setInterval(chargebattery, 7000);
+    // setInterval(chargebattery, setInterval(getDate(50000)));
+  </script>
+
+  <!--
+Start of: Canvas Clock working, not in use right now
+<canvas id="canvasclock" width="400" height="400"
+style="background-color:white">
+</canvas>
+End of Canvas Clock
+-->
+
+
+  <span id="invaders"><img src="images/invaders.png" id="invaders"></span>
+  <span class="treenode"><img src="images/treelifenode.jpg" id="treenode" alt=""></span>
+
+  <!--
+<audio id="bgAudio" preload="auto">
+<source src="sounds/sunsetmix.mp3" id="bgAudio2">
+</audio>
+-->
+
+  <!--
+ball dropping displaying gravity in action
+<body onload="startGame()">
+-->
+
+
+
+
+</body>
+
+</html>
