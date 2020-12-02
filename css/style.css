@@ -1,0 +1,207 @@
+
+html {
+  border: 11px solid #faa906;
+  margin:auto;
+  border-bottom: 0;
+  z-index: -1;
+  --scrollbarBG: #575756;
+  --thumbBG: #e93e0a;
+  /*background: url(images/treelifenode.jpg) no-repeat center center fixed; */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-attachment:fixed;
+}
+html::-webkit-scrollbar-thumb {
+background: linear-gradient(180deg,#ff8a00,#e93e0a);
+  border-radius: 22px;
+  box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
+}
+
+body::-webkit-scrollbar {
+  height:4px;
+  width: 20px;
+}
+body {
+  scrollbar-width: thick;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+}
+body::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+body::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg,#ff8a00,#e93e0a);
+  border-radius: 30px;
+  box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
+  background-color: var(--thumbBG) ;
+  border-radius: 7px;
+  border: 3px solid var(--scrollbarBG);
+}
+
+
+
+
+body {
+  background-color: #3797a4;
+  /* light green*/
+}
+
+img {
+  border-color: gold;
+  border-radius: 22px;
+}
+#thejourney{
+  text-align: center;
+}
+
+hr {
+  /*background-color:#adce74;*/
+  border-color: #ffd31d;
+  border-width: 6px;
+  border-style: none;
+  border-top-style: dotted;
+  width: 40%;
+}
+table {
+  border-collapse: collapse;
+}
+
+.dandright td, th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.dandrleft td{
+  border: 1px solid #999;
+  padding: 0.5rem;
+  color: #24bddf;
+  font-family: monospace;
+  font-size: 12px;
+  text-align: left;
+
+}
+.workexperience {
+  border-collapse: collapse;
+  color: #01d28e;
+  font-family: monospace;
+  font-size: 12px;
+}
+.workexperience td, .workexperience th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  color: #24bddf;
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.workexperience tr:nth-child(even){
+  background-color: #f2f2f2;}
+
+.workexperience tr:hover {
+  background-color: #ddd;}
+
+.workexperience th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: #24bddf;
+  font-family: monospace;
+  font-size: 14px;
+  float: inherit;
+}
+section {
+  margin:0 auto;
+}
+/* unvisited link light green */
+a:link {
+  color: #239d60;
+  text-decoration: none;
+
+}
+
+/* visited link light green */
+a:visited {
+  color: #7cbd1e;
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  color: #ffd31d;
+  text-decoration: underline;
+}
+
+/* selected link */
+a:active {
+  color:#5a3f11;
+  text-decoration: none;
+}
+
+h1 {
+  color: #00a8cc;
+  font-family: monospace;
+}
+
+h2 {
+  /*color: #5a3f11; brown*/
+  color:#01d28e;
+  font-family: monospace;
+}
+
+h3 {
+  color: #8bcdcd;
+  font-family: monospace;
+  /*brown*/
+}
+
+p {
+  color: #8bcdcd;
+  font-family: monospace;
+}
+.greenheartinterest {
+  color: #24bddf;
+  font-family: monospace;
+  font-size: 12px;
+}
+#green {
+  color: #00bd56;
+  font-family: monospace;
+}
+#student{
+  color: #f3c623;
+  font-family: monospace;
+  font-size: 17px;
+}
+#binaryinterest{
+  color: #24bddf;
+  font-family: monospace;
+  font-size: 12px;
+}
+#hobbies{
+  color: #24bddf;
+  font-family: monospace;
+  font-size: 12px;
+}
+
+#myname {
+  font-weight: 800;
+}
+
+#monkey {
+  border-radius: 66%;
+}
+.workexperience {
+  color: #00649f;
+  font-family: monospace;
+  font-size: 17px;
+  margin:0 auto;
+}
+#disability {
+  color: #f3c623;
+  font-family: monospace;
+  font-size: 12px;
+  text-align: center;
+}
